@@ -101,9 +101,13 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    let aNum = parseFloat(a);
-    let bNum = parseFloat(b);
-    return aNum / bNum;
+    if (b === '0') {
+        return `You can't divide by 0, silly goose!`;
+    } else {
+        let aNum = parseFloat(a);
+        let bNum = parseFloat(b);
+        return aNum / bNum;
+    }
 }
 
 function operate(operator, a, b) {
@@ -122,7 +126,7 @@ function operate(operator, a, b) {
             currentValue = divide(a,b);
             break;
     }
-    displayScreen.textContent = Math.round(currentValue * 10000000000) / 10000000000;
+    displayScreen.textContent = currentValue == `You can't divide by 0, silly goose!` ? currentValue : Math.round(currentValue * 10000000000) / 10000000000;
     firstNum = currentValue.toString();
     secondNum = null;
 }
