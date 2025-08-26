@@ -13,54 +13,52 @@ container.addEventListener('click', (event) => {
 
     switch (target.id) {
         case 'one':
-            displayScreen.value = currentDisplayValue + '1';
+            onClickNumber(1);
             break;
         case 'two':
-            displayScreen.value = currentDisplayValue + '2';
+            onClickNumber(2);
             break;
         case 'three':
-            displayScreen.value = currentDisplayValue + '3';
+            onClickNumber(3);
             break;
         case 'four':
-            displayScreen.value = currentDisplayValue + '4';
+            onClickNumber(4);
             break;
         case 'five':
-            displayScreen.value = currentDisplayValue + '5';
+            onClickNumber(5);
             break;
         case 'six':
-            displayScreen.value = currentDisplayValue + '6';
+            onClickNumber(6);
             break;
         case 'seven':
-            displayScreen.value = currentDisplayValue + '7';
+            onClickNumber(7);
             break;
         case 'eight':
-            displayScreen.value = currentDisplayValue + '8';
+            onClickNumber(8);
             break;
         case 'nine':
-            displayScreen.value = currentDisplayValue + '9';
+            onClickNumber(9);
             break;
         case 'zero':
-            displayScreen.value = currentDisplayValue + '0';
+            onClickNumber(0);
             break;
         case 'decimal':
-            if (!currentDisplayValue.includes('.')) {
-                displayScreen.value = currentDisplayValue + '.';
-            }
+            onClickNumber('.');
             break;
         case 'plus':
-            onOperatorClick('plus');
+            onClickOperator('plus');
             break;
         case 'minus':
-            onOperatorClick('minus');
+            onClickOperator('minus');
             break;
         case 'multiply':
-            onOperatorClick('multiply');
+            onClickOperator('multiply');
             break;
         case 'divide':
-            onOperatorClick('divide');
+            onClickOperator('divide');
             break;
         case 'equals':
-            onOperatorClick('equals');
+            onClickOperator('equals');
             break;
         case 'clear':
             clearAll();
@@ -74,18 +72,26 @@ container.addEventListener('click', (event) => {
 // Helper Functions
 
 function add(a, b) {
+    aNum = parseFloat(a);
+    bNum = parseFloat(b);
     return a + b;
 }
 
 function subtract(a, b) {
+    aNum = parseFloat(a);
+    bNum = parseFloat(b);
     return a - b;
 }
 
 function multiply(a, b) {
+    aNum = parseFloat(a);
+    bNum = parseFloat(b);
     return a * b;
 }
 
 function divide(a, b) {
+    aNum = parseFloat(a);
+    bNum = parseFloat(b);
     return a / b;
 }
 
@@ -106,8 +112,12 @@ function operate(operator, a, b) {
     }
 }
 
-function onOperatorClick(input) {
+function onClickNumber(num) {
+    
+}
 
+function onClickOperator(operator) {
+    
 }
 
 function clearAll() {
