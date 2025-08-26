@@ -16,7 +16,19 @@ function divide(a, b) {
     return a / b;
 }
 
-console.log(add(6,4));
-console.log(subtract(6,4));
-console.log(multiply(6,4));
-console.log(divide(6,4));
+function operate(operator, a, b) {
+    switch (operator) {
+        case 'plus':
+            return add(a,b);
+            break;
+        case 'minus':
+            return subtract(a,b);
+            break;
+        case 'multiply':
+            return multiply(a,b);
+            break;
+        case 'divide':
+            return divide(a,b);
+            break;
+    }
+}
