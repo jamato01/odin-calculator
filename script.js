@@ -105,20 +105,24 @@ function divide(a, b) {
 }
 
 function operate(operator, a, b) {
+    let currentValue;
     switch (operator) {
         case 'plus':
-            return add(a,b);
+            currentValue = add(a,b);
             break;
         case 'minus':
-            return subtract(a,b);
+            currentValue = subtract(a,b);
             break;
         case 'multiply':
-            return multiply(a,b);
+            currentValue = multiply(a,b);
             break;
         case 'divide':
-            return divide(a,b);
+            currentValue = divide(a,b);
             break;
     }
+    displayScreen.value = currentValue;
+    firstNum = currentValue.toString();
+    secondNum = null;
 }
 
 function onClickNumber(num) {
@@ -144,29 +148,37 @@ function onClickNumber(num) {
 function onClickOperator(operator) {
     switch (operator) {
         case 'plus':
+            if (currentOperator && firstNum && secondNum) {
+                operate(currentOperator,firstNum,secondNum);
+            }
             currentOperator = 'plus';
             hasEqualled = false;
             break;
         case 'minus':
+            if (currentOperator && firstNum && secondNum) {
+                operate(currentOperator,firstNum,secondNum);
+            }
             currentOperator = 'minus';
             hasEqualled = false;
             break;
         case 'multiply':
+            if (currentOperator && firstNum && secondNum) {
+                operate(currentOperator,firstNum,secondNum);
+            }
             currentOperator = 'multiply';
             hasEqualled = false;
             break;
         case 'divide':
+            if (currentOperator && firstNum && secondNum) {
+                operate(currentOperator,firstNum,secondNum);
+            }
             currentOperator = 'divide';
             hasEqualled = false;
             break;
         case 'equals':
             
             if (firstNum && secondNum) {
-                let currentValue = operate(currentOperator,firstNum,secondNum);
-                displayScreen.value = currentValue;
-                firstNum = currentValue.toString();
-                secondNum = null;
-                hasEqualled = true;
+                operate(currentOperator,firstNum,secondNum);
             }
             currentOperator = null;
             break;
