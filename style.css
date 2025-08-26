@@ -43,6 +43,11 @@ h1 {
     text-align: right;
 }
 
+.display:focus {
+    outline: none;
+    background-color: rgb(223, 240, 255);
+}
+
 button {
     flex-grow: 1;
     margin: 8px;
