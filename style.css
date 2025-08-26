@@ -36,11 +36,15 @@ h1 {
 /* Calculator Content */
 .display {
     flex-grow: 1;
+    min-height: 80px;
     margin: 8px;
     border: none;
     border-radius: 8px;
-    font-size: 2em;
-    text-align: right;
+    font-size: 4em;
+    background-color: white;
+    display: flex;
+    justify-content: end;
+    align-items: center;
 }
 
 .display:focus {

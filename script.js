@@ -10,7 +10,7 @@ let hasEqualled;
 
 container.addEventListener('click', (event) => {
     let target = event.target;
-    let currentDisplayValue = displayScreen.value;
+    let currentDisplayValue = displayScreen.textContent;
 
     switch (target.id) {
         case 'one':
@@ -67,8 +67,8 @@ container.addEventListener('click', (event) => {
             clearAll();
             break;
         case 'backspace':
-            displayScreen.value = currentDisplayValue.slice(0,-1);
-            currentDisplayValue = displayScreen.value;
+            displayScreen.textContent = currentDisplayValue.slice(0,-1);
+            currentDisplayValue = displayScreen.textContent;
             if (hasEqualled) {
                 clearAll();
             } else if (!secondNum) {
@@ -122,7 +122,7 @@ function operate(operator, a, b) {
             currentValue = divide(a,b);
             break;
     }
-    displayScreen.value = Math.round(currentValue * 10000000000) / 10000000000;
+    displayScreen.textContent = Math.round(currentValue * 10000000000) / 10000000000;
     firstNum = currentValue.toString();
     secondNum = null;
 }
@@ -134,16 +134,16 @@ function onClickNumber(num) {
     }
     if (!firstNum) {
         firstNum = `${num}`;
-        displayScreen.value = `${firstNum}`;
+        displayScreen.textContent = `${firstNum}`;
     } else if (firstNum && !currentOperator) {
         firstNum = `${firstNum}${num}`;
-        displayScreen.value = `${firstNum}`;
+        displayScreen.textContent = `${firstNum}`;
     } else if (firstNum && !secondNum && currentOperator) {
         secondNum = `${num}`;
-        displayScreen.value = `${secondNum}`;
+        displayScreen.textContent = `${secondNum}`;
     } else if (firstNum && secondNum && currentOperator) {
         secondNum = `${secondNum}${num}`;
-        displayScreen.value = `${secondNum}`;
+        displayScreen.textContent = `${secondNum}`;
     }
 }
 
@@ -192,5 +192,5 @@ function clearAll() {
     firstNum = null;
     secondNum = null;
     currentOperator = null;
-    displayScreen.value = '';
+    displayScreen.textContent = '';
 }
