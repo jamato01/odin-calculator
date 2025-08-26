@@ -2,6 +2,11 @@
 const container = document.querySelector('.container');
 const displayScreen = document.querySelector('.display');
 
+// Global Variables
+let currentOperator;
+let firstNum;
+let secondNum;
+
 container.addEventListener('click', (event) => {
     let target = event.target;
 
@@ -39,6 +44,8 @@ container.addEventListener('click', (event) => {
         case 'equals':
             break;
         case 'clear':
+            console.log('Clear All');
+            clearAll();
             break;
         case 'backspace':
             break;
@@ -78,4 +85,15 @@ function operate(operator, a, b) {
             return divide(a,b);
             break;
     }
+}
+
+function onClick(input) {
+
+}
+
+function clearAll() {
+    firstNum = null;
+    secondNum = null;
+    currentOperator = null;
+    displayScreen.value = '';
 }
