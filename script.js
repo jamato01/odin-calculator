@@ -9,45 +9,64 @@ let secondNum;
 
 container.addEventListener('click', (event) => {
     let target = event.target;
+    let currentDisplayValue = displayScreen.value;
 
     switch (target.id) {
         case 'one':
+            displayScreen.value = currentDisplayValue + '1';
             break;
         case 'two':
+            displayScreen.value = currentDisplayValue + '2';
             break;
         case 'three':
+            displayScreen.value = currentDisplayValue + '3';
             break;
         case 'four':
+            displayScreen.value = currentDisplayValue + '4';
             break;
         case 'five':
+            displayScreen.value = currentDisplayValue + '5';
             break;
         case 'six':
+            displayScreen.value = currentDisplayValue + '6';
             break;
         case 'seven':
+            displayScreen.value = currentDisplayValue + '7';
             break;
         case 'eight':
+            displayScreen.value = currentDisplayValue + '8';
             break;
         case 'nine':
+            displayScreen.value = currentDisplayValue + '9';
             break;
         case 'zero':
+            displayScreen.value = currentDisplayValue + '0';
             break;
         case 'decimal':
+            if (!currentDisplayValue.includes('.')) {
+                displayScreen.value = currentDisplayValue + '.';
+            }
             break;
         case 'plus':
+            onOperatorClick('plus');
             break;
         case 'minus':
+            onOperatorClick('minus');
             break;
         case 'multiply':
+            onOperatorClick('multiply');
             break;
         case 'divide':
+            onOperatorClick('divide');
             break;
         case 'equals':
+            onOperatorClick('equals');
             break;
         case 'clear':
-            console.log('Clear All');
             clearAll();
             break;
         case 'backspace':
+            displayScreen.value = currentDisplayValue.slice(0,-1);
             break;
     }
 });
@@ -87,7 +106,7 @@ function operate(operator, a, b) {
     }
 }
 
-function onClick(input) {
+function onOperatorClick(input) {
 
 }
 
