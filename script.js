@@ -6,6 +6,7 @@ const displayScreen = document.querySelector('.display');
 let currentOperator;
 let firstNum;
 let secondNum;
+let hasEqualled;
 
 container.addEventListener('click', (event) => {
     let target = event.target;
@@ -65,6 +66,14 @@ container.addEventListener('click', (event) => {
             break;
         case 'backspace':
             displayScreen.value = currentDisplayValue.slice(0,-1);
+            currentDisplayValue = displayScreen.value;
+            if (hasEqualled) {
+                clearAll();
+            } else if (!secondNum) {
+                firstNum = currentDisplayValue;
+            } else {
+                secondNum = currentDisplayValue;
+            }
             break;
     }
 });
@@ -72,27 +81,27 @@ container.addEventListener('click', (event) => {
 // Helper Functions
 
 function add(a, b) {
-    aNum = parseFloat(a);
-    bNum = parseFloat(b);
-    return a + b;
+    let aNum = parseFloat(a);
+    let bNum = parseFloat(b);
+    return aNum + bNum;
 }
 
 function subtract(a, b) {
-    aNum = parseFloat(a);
-    bNum = parseFloat(b);
-    return a - b;
+    let aNum = parseFloat(a);
+    let bNum = parseFloat(b);
+    return aNum - bNum;
 }
 
 function multiply(a, b) {
-    aNum = parseFloat(a);
-    bNum = parseFloat(b);
-    return a * b;
+    let aNum = parseFloat(a);
+    let bNum = parseFloat(b);
+    return aNum * bNum;
 }
 
 function divide(a, b) {
-    aNum = parseFloat(a);
-    bNum = parseFloat(b);
-    return a / b;
+    let aNum = parseFloat(a);
+    let bNum = parseFloat(b);
+    return aNum / bNum;
 }
 
 function operate(operator, a, b) {
@@ -113,11 +122,55 @@ function operate(operator, a, b) {
 }
 
 function onClickNumber(num) {
-    
+    if (hasEqualled) {
+        firstNum = null;
+        hasEqualled = false;
+    }
+    if (!firstNum) {
+        firstNum = `${num}`;
+        displayScreen.value = `${firstNum}`;
+    } else if (firstNum && !currentOperator) {
+        firstNum = `${firstNum}${num}`;
+        displayScreen.value = `${firstNum}`;
+    } else if (firstNum && !secondNum && currentOperator) {
+        secondNum = `${num}`;
+        displayScreen.value = `${secondNum}`;
+    } else if (firstNum && secondNum && currentOperator) {
+        secondNum = `${secondNum}${num}`;
+        displayScreen.value = `${secondNum}`;
+    }
 }
 
 function onClickOperator(operator) {
-    
+    switch (operator) {
+        case 'plus':
+            currentOperator = 'plus';
+            hasEqualled = false;
+            break;
+        case 'minus':
+            currentOperator = 'minus';
+            hasEqualled = false;
+            break;
+        case 'multiply':
+            currentOperator = 'multiply';
+            hasEqualled = false;
+            break;
+        case 'divide':
+            currentOperator = 'divide';
+            hasEqualled = false;
+            break;
+        case 'equals':
+            
+            if (firstNum && secondNum) {
+                let currentValue = operate(currentOperator,firstNum,secondNum);
+                displayScreen.value = currentValue;
+                firstNum = currentValue.toString();
+                secondNum = null;
+                hasEqualled = true;
+            }
+            currentOperator = null;
+            break;
+    }
 }
 
 function clearAll() {
