@@ -44,7 +44,9 @@ container.addEventListener('click', (event) => {
             onClickNumber(0);
             break;
         case 'decimal':
+            if (!currentDisplayValue.includes('.') || hasEqualled) {
             onClickNumber('.');
+            }
             break;
         case 'plus':
             onClickOperator('plus');
@@ -179,6 +181,7 @@ function onClickOperator(operator) {
             
             if (firstNum && secondNum) {
                 operate(currentOperator,firstNum,secondNum);
+                hasEqualled = true;
             }
             currentOperator = null;
             break;
