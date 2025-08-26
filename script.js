@@ -8,6 +8,80 @@ let firstNum;
 let secondNum;
 let hasEqualled;
 
+document.addEventListener('keydown', (event) => {
+    let key = event.key;
+    let currentDisplayValue = displayScreen.textContent;
+
+    switch (key) {
+        case '1':
+            onClickNumber(1);
+            break;
+        case '2':
+            onClickNumber(2);
+            break;
+        case '3':
+            onClickNumber(3);
+            break;
+        case '4':
+            onClickNumber(4);
+            break;
+        case '5':
+            onClickNumber(5);
+            break;
+        case '6':
+            onClickNumber(6);
+            break;
+        case '7':
+            onClickNumber(7);
+            break;
+        case '8':
+            onClickNumber(8);
+            break;
+        case '9':
+            onClickNumber(9);
+            break;
+        case '0':
+            onClickNumber(0);
+            break;
+        case '.':
+            if (!currentDisplayValue.includes('.') || hasEqualled) {
+            onClickNumber('.');
+            }
+            break;
+        case '+':
+            onClickOperator('plus');
+            break;
+        case '-':
+            onClickOperator('minus');
+            break;
+        case '*':
+            onClickOperator('multiply');
+            break;
+        case '/':
+            onClickOperator('divide');
+            break;
+        case 'Enter':
+        case '=':
+            onClickOperator('equals');
+            break;
+        case 'Delete':
+        case 'Clear':
+            clearAll();
+            break;
+        case 'Backspace':
+            displayScreen.textContent = currentDisplayValue.slice(0,-1);
+            currentDisplayValue = displayScreen.textContent;
+            if (hasEqualled) {
+                clearAll();
+            } else if (!secondNum) {
+                firstNum = currentDisplayValue;
+            } else {
+                secondNum = currentDisplayValue;
+            }
+            break;
+    }
+});
+
 container.addEventListener('click', (event) => {
     let target = event.target;
     let currentDisplayValue = displayScreen.textContent;
