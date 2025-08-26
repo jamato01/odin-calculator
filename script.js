@@ -122,7 +122,7 @@ function operate(operator, a, b) {
             currentValue = divide(a,b);
             break;
     }
-    displayScreen.value = Math.round(currentValue * 100000) / 100000;
+    displayScreen.value = Math.round(currentValue * 10000000000) / 10000000000;
     firstNum = currentValue.toString();
     secondNum = null;
 }
